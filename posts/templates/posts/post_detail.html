@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	{{ post.title }}
+{% endblock %}
+
+{% block body_href %}
+<body class="post-template-default single single-post postid-{{ post.id }} single-format-standard wp-custom-logo">
+{%  endblock %}
+
+{% block content %}
+<section class="page-header-section" style="background-image: url(
+	https://www.graphiclibrary.com/craft-blog/wp-content/themes/craftblog/asset/img/blog-1.jpg);">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<div class="paget-title">
+				  <h2>
+				     {{ post.title }}
+				 </h2>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main">
+			<div class="container">
+				<div class="row justify-content-between">
+					<div class="col-lg-7 col-md-8">
+
+<article id="post-{{ post.id }}" class="single-blog-item post-{{ post.id }} post type-post status-publish format-standard has-post-thumbnail hentry category-kids-crafts">
+	<header class="entry-header">
+		{% for tag in tags %}
+		<h4 class="categories">
+			<a href="{{ url_for('posts.tag_detail', slug=tag.slug)}}">
+			{{ tag.name }}
+		</a>
+	 	</h4>
+		{% endfor %}
+	<h1 class="entry-title">
+	{{ post.title }}
+    </h1>
+		<div class="entry-meta">
+				<span class="posted-on">Posted on
+					<a href="https://www.graphiclibrary.com/craft-blog/cute-and-fluffy/" rel="bookmark">
+						<time class="entry-date published" datetime="2019-03-28T16:29:11+00:00"> {{ post.created.date() }}
+						</time>
+						<time class="updated" datetime="2019-03-28T16:37:56+00:00">
+						{{ post.created.date() }}
+					</time>
+				</a>
+			</span>
+					</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+
+			<div class="post-thumbnail">
+				<img width="1152" height="559" src="https://www.graphiclibrary.com/craft-blog/wp-content/uploads/2019/03/fluffy.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://www.graphiclibrary.com/craft-blog/wp-content/uploads/2019/03/fluffy.jpg 1152w, https://www.graphiclibrary.com/craft-blog/wp-content/uploads/2019/03/fluffy-300x146.jpg 300w, https://www.graphiclibrary.com/craft-blog/wp-content/uploads/2019/03/fluffy-768x373.jpg 768w, https://www.graphiclibrary.com/craft-blog/wp-content/uploads/2019/03/fluffy-1024x497.jpg 1024w" sizes="(max-width: 1152px) 100vw, 1152px" />
+			</div><!-- .post-thumbnail -->
+
+
+	<div class="entry-content">
+		<p>
+			{{ post.body }}
+		</p>
+    </div><!-- .entry-content -->
+
+</article><!-- #post-46 -->
+<nav class="navigation post-navigation" role="navigation">
+	<h2 class="screen-reader-text">
+		Post navigation
+	</h2>
+	<div class="nav-links">
+            {% if post_pre %}
+            <div class="nav-previous">
+                <a href="{{ url_for('posts.post_detail', slug=post_pre.slug) }}" rel="prev">
+                    {{ post_pre.title }}
+                </a>
+            </div>
+            {% endif %}
+            {% if post_next %}
+            <div class="nav-next">
+                <a href="{{ url_for('posts.post_detail', slug=post_next.slug) }}" rel="next">
+                    {{ post_next.title }}
+                </a>
+            </div>
+            {% endif %}
+        </div>
+
+	</nav>
+
+<div id="comments" class="comments-area">
+<!--
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/craft-blog/cute-and-fluffy/#respond" style="display:none;">Cancel reply</a></small></h3>			<form action="https://www.graphiclibrary.com/craft-blog/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
+				<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /><label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='46' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p>			</form>
+			</div><!-- #respond -->
+
+</div><!-- #comments -->
+
+					</div>
+
+{% endblock %}
+{% block aside_recent %}
+{% for post in posts %}
+    <li>
+        <a href="{{ url_for('posts.post_detail', slug=post.slug) }}">
+            {{ post.title }}
+        </a>
+    </li>
+{% endfor %}
+{% endblock %}
+
+{% block aside_archive %}
+    {% for year, month, month_name in result_archive %}
+        <li>
+            <a href="{{ url_for('posts.archive_detail', year=year, month=month) }}">{{ month_name }} {{ year }}</a>
+        </li>
+    {% endfor %}
+{% endblock %}
+
+{% block aside_tags %}
+    {% for tag in tags_all %}
+    <li class="cat-item cat-item-{{ tag.id }}">
+        <a href="{{ url_for('posts.tag_detail', slug=tag.slug) }}">{{ tag.name }}</a>
+    </li>
+    {% endfor %}
+{% endblock %}
+    {% block template_edit_add %}
+        <li>
+            <a href="{{ url_for('posts.edit_post', slug=post.slug) }}" >Редактировать эту публикацию</a>
+        </li>
+        <li>
+            <a href="{{ url_for('posts.delete_post', slug=post.slug) }}" >Удалить эту публикацию</a>
+        </li>
+    {% endblock %}
+{% block div %}
+</div>
+{% endblock %}

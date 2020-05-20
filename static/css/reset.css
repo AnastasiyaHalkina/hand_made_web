@@ -1,0 +1,195 @@
+body{
+	font-family: 'Raleway', sans-serif;
+	color: #666666
+}
+
+h1, h2, h3, h4, h5, h6{
+	margin: 0;
+	color: #4d4d4d;
+	padding: 0px 0px 20px 0px;
+	word-break: break-all;
+    font-family: 'Raleway', sans-serif;
+}
+ul, ol{
+	margin-bottom: 20px;
+	margin-left: 0;
+	padding-left: 10px
+}
+
+p{
+	margin: 0px 0px 15px 0px;
+}
+a{
+	color: #4d4d4d;
+	display: inline-block;
+}
+a:active, a:focus, a:hover, a:visited{
+	outline: 0;
+	text-decoration: none;
+	border: 0;
+	color: rgba(0, 0, 0, .8)
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="phone"], input[type="search"], input[type="url"]{
+	height: 45px;
+	border: 1px solid #eee;
+	padding-left: 10px;
+	display: inline-block;
+}
+textarea{
+	border: 1px solid #eee;
+	padding: 10px
+}
+input[type="text"]:hover, input[type="email"]:hover, input[type="password"]:hover, input[type="phone"]:hover, input[type="search"]:hover, input[type="url"]:hover,input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="phone"]:focus, input[type="search"]:focus, input[type="url"]:focus,input[type="text"]:active, input[type="email"]:active, input[type="password"]:active, input[type="phone"]:active, input[type="search"]:active, input[type="url"]:active, textarea:hover, textarea:focus, textarea:active{
+	border: 1px solid #eee;
+	outline: none;
+}
+input[type="button"], input[type="submit"], button{
+	padding: 12px 20px;
+	border: 1px solid #000;
+	background: #000;
+	color: #fff;
+	border-radius: 0;
+	transition: .4s;
+	cursor: pointer;
+	line-height: normal;
+}
+input[type="button"]:hover, input[type="submit"]:hover, button:hover, input[type="button"]:focus, input[type="submit"]:focus, button:focus, input[type="button"]:active, input[type="submit"]:active, button:active{
+	border: 1px solid #000;
+	outline: none;
+	opacity: .8;
+}
+table th, table td {
+    border: 1px solid #eee;
+    padding: 10px;
+}
+blockquote {
+    border: 5px solid #eee;
+    padding: 20px 20px 5px 20px;
+}
+
+
+
+
+/*all regular css code*/
+
+/* header css */
+.site-branding-area {
+    padding: 20px 0 10px 0;
+}
+
+.nav-bar-area {
+    background: #000;
+}
+
+.menu li a {
+    color: #fff;
+    text-transform: uppercase;
+    padding: 10px 15px
+}
+
+ul.menu ul li {
+    background: #000;
+}
+
+.menu li a:hover {
+    color: rgb(255, 255, 255, .8);
+}
+
+.menu>li:first-child a {
+    padding-left: 0;
+}
+
+/*end header css*/
+/*content area*/
+
+
+.content-area {
+    padding: 100px 0;
+}
+
+/*single articale area*/
+
+.entry-meta {
+    margin-bottom: 20px;
+}
+
+/*end of single articale*/
+
+/*end of conten area*/
+
+/*footer area*/
+
+footer.site-footer {
+    background: #000;
+    color: #fff;
+    padding: 10px 0;
+}
+
+footer.site-footer a {
+    color: #fff;
+}
+
+/*end of footer css*/
+
+/*side bar css*/
+.widget li {
+    line-height: 36px;
+}
+
+/*end of sidebar css*/
+
+/*comment list css*/
+
+ol.comment-list {
+    padding-left: 0;
+    list-style: none;
+}
+
+ol.comment-list li.comment {
+    list-style: none;
+}
+
+ol.comment-list .single-comment {
+    margin-bottom: 30px;
+}
+
+ol.comment-list .single-comment .commenter-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    float: left;
+}
+
+ol.comment-list .single-comment {}
+
+ol.comment-list .single-comment .commnenter-details {
+    width: calc(100% - 120px);
+    float: right;
+}
+
+ol.comment-list .single-comment .commnenter-details>ul,
+ol.comment-list .single-comment .commnenter-details>ol {
+    margin-bottom: 20px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+    ol.comment-list ol.children {
+        margin-left: 0;
+        padding-left: 0;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    ol.comment-list .single-comment .commnenter-details {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    ol.comment-list ol.children {
+        margin-left: 0;
+        padding-left: 0;
+    }
+}

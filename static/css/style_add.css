@@ -1,0 +1,6 @@
+section#recent-posts-2.widget.widget_recent_entries,
+section#recent-comments-2.widget.widget_recent_comments,
+section#archives-2.widget.widget_archive,
+section#categories-2.widget.widget_categories {
+    display: none;
+}

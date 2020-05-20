@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Выполнить вход
+{% endblock %}
+
+{% block append_css %}
+    <link rel='stylesheet' href="{{ url_for('static', filename="css/style_login.css") }}">
+{% endblock %}
+
+{% block body_href %}
+<body class="post-template-default single single-post postid single-format-standard wp-custom-logo">
+{%  endblock %}
+
+{% block content %}
+
+<section class="page-header-section" style="background-image: url(
+	https://www.graphiclibrary.com/craft-blog/wp-content/themes/craftblog/asset/img/blog-1.jpg);">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<div class="paget-title">
+				  <h2>
+                    {{ _('Страница авторизации') }}
+				 </h2>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main">
+			<div class="container">
+				<div class="row justify-content-between">
+					<div class="col-lg-7 col-md-8">
+
+<div id="comments" class="comments-area">
+	<div id="respond" class="comment-respond">
+{% from "security/_macros.html" import render_field_with_errors, render_field %}
+{% include "security/_messages.html" %}
+<form action="{{ url_for_security('login') }}" method="POST" name="login_user_form">
+  {{ login_user_form.hidden_tag() }}
+  {{ render_field_with_errors(login_user_form.email, class="comment-form-email", size="40", maxlength="255") }}
+  {{ render_field_with_errors(login_user_form.password, class="comment-form-author", size="30", maxlength="255") }}
+  {{ render_field_with_errors(login_user_form.remember) }}
+  {{ render_field(login_user_form.next) }}
+  {{ render_field(login_user_form.submit) }}
+</form>
+{% include "security/_menu.html" %}
+    	</div><!-- #respond -->
+
+</div><!-- #comments -->
+</div>
+{% endblock %}
+
+{% block div %}
+</div>
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	{{ tag.name }}
+{% endblock %}
+
+{% block body_href %}
+<body class="archive category category-{{ tag.name }} category-{{ tag.id }} wp-custom-logo hfeed">
+{%  endblock %}
+
+{% block content %}
+<section class="page-header-section" style="background-image: url(
+	https://www.graphiclibrary.com/craft-blog/wp-content/themes/craftblog/asset/img/blog-1.jpg);">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<div class="paget-title">
+				  <h2>
+				     {{ tag.name }}
+				 </h2>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main">
+			<div class="container">
+				<div class="row justify-content-between">
+					<div class="col-lg-7 col-md-8">
+                        <header class="page-header">
+                            <h1 class="page-title">Категория: {{ tag.name }}</h1>
+                        </header><!-- .page-header -->
+{% for post in posts %}
+<article id="post-{{ post.id }}" class="single-blog-item post-{{ post.id }} post type-post status-publish format-standard has-post-thumbnail hentry category-{{ tag.name }}">
+	<header class="entry-header">
+		{% for tag in tags %}
+		<h4 class="categories">
+			<a href="{{ url_for('posts.tag_detail', slug=tag.slug)}}">
+			{{ tag.name }}
+		</a>
+	 	</h4>
+		{% endfor %}
+	<h1 class="entry-title">
+	{{ post.title }}
+    </h1>
+		<div class="entry-meta">
+				<span class="posted-on">Posted on
+					<a href="https://www.graphiclibrary.com/craft-blog/cute-and-fluffy/" rel="bookmark">
+						<time class="entry-date published" datetime="2019-03-28T16:29:11+00:00"> {{ post.created }}
+						</time>
+						<time class="updated" datetime="2019-03-28T16:37:56+00:00">
+						{{ post.created }}
+					</time>
+				</a>
+			</span>
+					</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+
+			<div class="post-thumbnail">
+				<img width="1152" height="559" src="https://www.graphiclibrary.com/craft-blog/wp-content/uploads/2019/03/fluffy.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://www.graphiclibrary.com/craft-blog/wp-content/uploads/2019/03/fluffy.jpg 1152w, https://www.graphiclibrary.com/craft-blog/wp-content/uploads/2019/03/fluffy-300x146.jpg 300w, https://www.graphiclibrary.com/craft-blog/wp-content/uploads/2019/03/fluffy-768x373.jpg 768w, https://www.graphiclibrary.com/craft-blog/wp-content/uploads/2019/03/fluffy-1024x497.jpg 1024w" sizes="(max-width: 1152px) 100vw, 1152px" />
+			</div><!-- .post-thumbnail -->
+
+
+	<div class="entry-content">
+        <div class="excerpt">
+            <a href="{{ url_for('posts.post_detail', slug=post.slug) }}">Читать полностью</a>
+        </div>
+    </div><!-- .entry-content -->
+
+</article><!-- #post-46 -->
+{% endfor %}
+                    </div>
+{% endblock %}
+
+{% block aside_recent %}
+{% for post in posts_recent %}
+    <li>
+        <a href="{{ url_for('posts.post_detail', slug=post.slug) }}">
+            {{ post.title }}
+        </a>
+    </li>
+{% endfor %}
+{% endblock %}
+
+{% block aside_archive %}
+    {% for year, month, month_name in result_archive %}
+        <li>
+            <a href="{{ url_for('posts.archive_detail', year=year, month=month) }}">{{ month_name }} {{ year }}</a>
+        </li>
+    {% endfor %}
+{% endblock %}
+
+{% block aside_tags %}
+    {% for tag in tags_all %}
+    <li class="cat-item cat-item-{{ tag.id }}">
+        <a href="{{ url_for('posts.tag_detail', slug=tag.slug) }}">{{ tag.name }}</a>
+    </li>
+    {% endfor %}
+{% endblock %}
+
+{% block div %}
+</div>
+{% endblock %}
